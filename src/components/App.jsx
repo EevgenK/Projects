@@ -1,16 +1,61 @@
+import { Routes, Route, NavLink } from 'react-router-dom';
+import { useState, useCallback } from 'react';
+import FeedbackApp from './modules/FeedbackApp/FeedbackApp';
+import PhoneBook from './modules/PhoneBook/PhoneBook';
+import SerchImages from './modules/SearchImages/SearchImages';
+
+// import Timer from './modules/Timer/Timer';
+// import EventCalendar from './modules/EventCalendar/EventCalendar';
+import commonCss from '../common-styles/common.module.scss';
+
 export const App = () => {
+  const [isFetched, setIsFetched] = useState(false);
+  const checkFetch = useCallback(
+    (str = false) => setIsFetched(Boolean(str)),
+    []
+  );
   return (
     <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
+      className={commonCss.container}
+      style={{ height: isFetched && '100%' }}
     >
-      React homework template
+      <nav className={commonCss.navigationt}>
+        <NavLink
+          className={({ isActive }) =>
+            [`${commonCss.link} ${isActive ? commonCss.active : ''}`].join(' ')
+          }
+          to="/serchImages"
+        >
+          Serch Images
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            [`${commonCss.link} ${isActive ? commonCss.active : ''}`].join(' ')
+          }
+          to="/phonebook"
+        >
+          Phonebook
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            [`${commonCss.link} ${isActive ? commonCss.active : ''}`].join(' ')
+          }
+          to="/feedback"
+        >
+          Feedback
+        </NavLink>
+      </nav>
+      <Routes>
+        <Route
+          path="/serchImages"
+          element={<SerchImages isFetched={checkFetch} />}
+        />
+        <Route path="/phonebook" element={<PhoneBook />} />
+        <Route path="/feedback" element={<FeedbackApp />} />
+
+        {/* <EventCalendar /> */}
+        {/* <Timer /> */}
+      </Routes>
     </div>
   );
 };

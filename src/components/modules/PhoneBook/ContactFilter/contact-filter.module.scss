@@ -1,0 +1,30 @@
+// @import 'styles/shared.scss';
+.formGroup {
+  width: 360px;
+  font-size: 18px;
+  border: 1px solid var(--bg-color);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  background: var(--bg-color);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.input {
+  width: 90%;
+  padding: 6px;
+  border-color: transparent;
+  border-radius: 10px;
+
+  &:focus {
+    border-color: var(--btn-bg-color);
+    outline: var(--btn-bg-color);
+    transform: scale(1.05);
+  }
+}
+.label {
+  text-align: center;
+}

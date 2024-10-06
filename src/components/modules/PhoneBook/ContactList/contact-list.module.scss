@@ -1,0 +1,30 @@
+.list {
+  min-width: 360px;
+  border: 1px solid var(--bg-color);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  background: var(--bg-color);
+  padding: 10px;
+  font-size: 18px;
+  list-style: disc;
+  padding-left: 30px;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+.btn {
+  width: 40px;
+  border-radius: 8px;
+  background-color: var(--btn-bg-color);
+  color: var(--second-text-color);
+  cursor: pointer;
+  border-color: transparent;
+  box-shadow: 6px 4px 6px 1px rgba(0, 0, 0, 0.75);
+  &:hover {
+    transform: scale(1.1);
+  }
+}

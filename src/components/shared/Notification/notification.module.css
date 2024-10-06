@@ -1,4 +1,4 @@
 .notification {
   font-size: 18px;
-  color: #004aad;
+  color: var(--second-text-color);
 }

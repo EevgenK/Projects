@@ -1,5 +1,5 @@
-import { Routes, Route, NavLink } from 'react-router-dom';
-import { useState, useCallback } from 'react';
+import { Routes, Route, NavLink, useLocation } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
 import FeedbackApp from './modules/FeedbackApp/FeedbackApp';
 import PhoneBook from './modules/PhoneBook/PhoneBook';
 import SerchImages from './modules/SearchImages/SearchImages';
@@ -10,6 +10,12 @@ import commonCss from '../common-styles/common.module.scss';
 
 export const App = () => {
   const [isFetched, setIsFetched] = useState(false);
+  const location = useLocation();
+  console.log(location);
+  useEffect(() => {
+    const { pathname } = location;
+    pathname !== '/serchImages' && setIsFetched(false);
+  }, [location]);
   const checkFetch = useCallback(
     (str = false) => setIsFetched(Boolean(str)),
     []

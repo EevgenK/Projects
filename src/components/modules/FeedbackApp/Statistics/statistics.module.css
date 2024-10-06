@@ -8,12 +8,12 @@
   gap: 20px;
 }
 .item {
-  border: 1px solid #004aad;
+  border: 1px solid var(--second-text-color);
   border-radius: 1200px;
   padding: 6px;
   max-width: 600px;
   min-width: 300px;
   font-size: 20px;
-  color: #004aad;
+  color: var(--second-text-color);
   text-transform: capitalize;
 }

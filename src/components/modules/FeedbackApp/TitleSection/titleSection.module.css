@@ -6,5 +6,5 @@
 .title {
   margin-bottom: 10px;
   font-size: 24px;
-  color: #004aad;
+  color: var(--second-text-color);
 }

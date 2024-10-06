@@ -2,9 +2,11 @@ import styles from './onclick-button.module.scss';
 import PropTypes from 'prop-types';
 const OnClickButton = ({ text, onClick }) => {
   return (
-    <button type="button" className={styles.butt} onClick={onClick}>
-      {text}
-    </button>
+    <div className={styles.box}>
+      <button type="button" className={styles.butt} onClick={onClick}>
+        {text}
+      </button>
+    </div>
   );
 };
 export default OnClickButton;

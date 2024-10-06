@@ -8,26 +8,32 @@
   background-position: center;
   background-repeat: repeat;
   background-size: cover;
-  // background-repeat: repeat;
   height: 100vh;
-  min-width: 100vh;
-  // display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
   font-size: 40px;
   color: #010101;
   align-items: flex-start;
   align-content: flex-start;
+  @media screen and (min-width: 480px) {
+    max-width: 480px;
+  }
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+  }
+  @media screen and (min-width: 1200px) {
+    max-width: 1200px;
+  }
 }
 .navigationt {
   padding: 16px;
 
   background: var(--bg-color);
   margin: 0 auto 10px;
-  width: 100vh;
+
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   font-family: 'Poppins', sans-serif;
   font-size: 22px;
   font-weight: 700;

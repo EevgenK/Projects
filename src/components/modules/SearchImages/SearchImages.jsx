@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Notify } from 'notiflix';
 
 import ImageGallery from './ImageGallery/ImageGallery';
@@ -8,7 +8,7 @@ import Loader from './Loader/Loader';
 import Modal from './Modal/Modal';
 import ErrorCard from 'components/shared/ErrorCard/ErrorCard';
 import { getGallery } from 'helpers/api/pixabay/getGallery';
-
+import smoothScroll from 'helpers/scroll/smothScroll';
 import styles from './search-images.module.scss';
 
 const SerchImages = ({ isFetched }) => {
@@ -20,6 +20,7 @@ const SerchImages = ({ isFetched }) => {
   const [totalPages, setTotalPages] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [imgForModal, setImgForModal] = useState(null);
+  const galleryRef = useRef(null);
 
   const stateChange = search => {
     isFetched('true');
@@ -27,6 +28,7 @@ const SerchImages = ({ isFetched }) => {
     setImages([]);
     setPage(1);
   };
+
   useEffect(() => {
     if (!search) {
       return;
@@ -75,7 +77,11 @@ const SerchImages = ({ isFetched }) => {
     <div className={styles.container}>
       <Searchbar onSubmit={stateChange} isLoading={isLoading} />
       {error && <ErrorCard text={error} />}
-      <ImageGallery images={images} onOpenModal={onOpenModal} />
+      <ImageGallery
+        getRef={galleryRef}
+        images={images}
+        onOpenModal={onOpenModal}
+      />
       {isLoading && (
         <Loader
           message={
@@ -87,7 +93,12 @@ const SerchImages = ({ isFetched }) => {
         (totalPages >= page && (
           <OnClickButton
             text="Load more..."
-            onClick={() => setPage(prevPage => prevPage + 1)}
+            onClick={() => {
+              setPage(prevPage => prevPage + 1);
+              setTimeout(() => {
+                smoothScroll(galleryRef);
+              }, 100);
+            }}
           />
         ))}
       {modalOpen && (

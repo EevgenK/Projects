@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
 import styles from './image-gallery.module.scss';
 
-const ImageGallery = ({ images, onOpenModal }) => {
+const ImageGallery = ({ images, onOpenModal, getRef }) => {
   const [hits, setHits] = useState([]);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const ImageGallery = ({ images, onOpenModal }) => {
   }, [images]);
 
   return (
-    <ul className={styles.gallery}>
+    <ul className={styles.gallery} ref={getRef}>
       <ImageGalleryItem items={hits} onOpenModal={onOpenModal} />
     </ul>
   );
@@ -56,4 +56,5 @@ ImageGallery.propTypes = {
     PropTypes.shape({ id: PropTypes.number.isRequired })
   ),
   onOpenModal: PropTypes.func.isRequired,
+  getRef: PropTypes.object.isRequired,
 };

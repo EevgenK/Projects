@@ -11,7 +11,6 @@ import commonCss from '../common-styles/common.module.scss';
 export const App = () => {
   const [isFetched, setIsFetched] = useState(false);
   const location = useLocation();
-  console.log(location);
   useEffect(() => {
     const { pathname } = location;
     pathname !== '/serchImages' && setIsFetched(false);

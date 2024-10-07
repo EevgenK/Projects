@@ -15,6 +15,7 @@
 }
 .picture {
   font-size: 100%;
+  max-width: calc(350px - 8px);
   @media screen and (min-width: 480px) {
     max-width: calc(480px - 14px);
   }

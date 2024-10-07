@@ -28,13 +28,13 @@
 }
 .navigationt {
   padding: 16px;
-
+  font-size: 14px;
   background: var(--bg-color);
   margin: 0 auto 10px;
   display: flex;
   justify-content: space-around;
   font-family: 'Poppins', sans-serif;
-  font-size: 22px;
+
   font-weight: 700;
   place-items: center;
   @media screen and (min-width: 480px) {

@@ -94,7 +94,7 @@ const SerchImages = ({ isFetched }) => {
         <Modal close={onCloseModal}>
           <img
             id="modal"
-            className={styles.modal}
+            className={styles.picture}
             src={imgForModal.url}
             alt={imgForModal.alt}
           />

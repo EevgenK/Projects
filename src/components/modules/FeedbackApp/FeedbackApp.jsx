@@ -5,7 +5,6 @@ import { Statistics } from './Statistics/Statistics';
 import { TitleSection } from './TitleSection/TitleSection';
 import { Notification } from '../../shared/Notification/Notification';
 
-import commonCss from '../../../common-styles/common.module.scss';
 const FeedbackApp = () => {
   // const [good, setGood] = useState(0);
   // const [neutral, setNeutral] = useState(0);
@@ -40,7 +39,7 @@ const FeedbackApp = () => {
   };
 
   return (
-    <div className={commonCss.container}>
+    <div>
       <TitleSection title="Please leave Feedback">
         <FeedbackOptions onLeaveFeedback={gettigFeedback} options={options} />
       </TitleSection>

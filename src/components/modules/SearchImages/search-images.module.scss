@@ -1,6 +1,5 @@
 .container {
   display: grid;
-
   grid-template-columns: 1fr;
   grid-gap: 16px;
   padding-bottom: 24px;
@@ -14,6 +13,15 @@
     max-width: 1200px;
   }
 }
-#modal {
+.picture {
   font-size: 100%;
+  @media screen and (min-width: 480px) {
+    max-width: calc(480px - 14px);
+  }
+  @media screen and (min-width: 768px) {
+    max-width: calc(768px - 14px);
+  }
+  @media screen and (min-width: 1200px) {
+    max-width: calc(1100px - 14px);
+  }
 }

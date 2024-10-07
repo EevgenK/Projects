@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
 import css from './feedback.module.scss';
 
-export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+export const FeedbackOptions = ({ isVoted, options, onLeaveFeedback }) => {
   const items = options.map(el => (
     <li key={el} className={css.item}>
-      <button className={css.btn} onClick={onLeaveFeedback}>
+      <button
+        className={isVoted ? css.clicked : css.btn}
+        onClick={onLeaveFeedback}
+      >
         {el}
       </button>
     </li>
@@ -19,4 +22,5 @@ FeedbackOptions.defaultProps = {
 FeedbackOptions.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
+  isVoted: PropTypes.bool.isRequired,
 };

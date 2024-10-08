@@ -8,7 +8,7 @@ import Loader from './Loader/Loader';
 import Modal from './Modal/Modal';
 import ErrorCard from 'components/shared/ErrorCard/ErrorCard';
 import { getGallery } from 'helpers/api/pixabay/getGallery';
-import smoothScroll from 'helpers/scroll/smothScroll';
+import smoothScroll from 'helpers/scroll/smoothScroll';
 import styles from './search-images.module.scss';
 
 const SerchImages = ({ isFetched }) => {

@@ -7,13 +7,11 @@ import { Notification } from '../../shared/Notification/Notification';
 import { getFeedbacks, putFeedbacks } from 'helpers/api/mockapi/getFeedbacks';
 import { Notify } from 'notiflix';
 import Button from 'components/shared/Button/Button';
+import { useLocalStorage } from 'helpers/hooks/useLocalStorage';
 
 const FeedbackApp = () => {
   const [feedbacks, setFeedbacks] = useState({ good: 0, neutral: 0, bad: 0 });
-  const [isVoted, setIsVoted] = useState(() => {
-    const voted = JSON.parse(localStorage.getItem('is-voted'));
-    return voted ?? false;
-  });
+  const [isVoted, setIsVoted] = useLocalStorage('is-voted', false);
   const [error, setError] = useState(null);
 
   const { good, neutral, bad } = feedbacks;
@@ -57,11 +55,8 @@ const FeedbackApp = () => {
       Notify.success('Thank you for your vote. It`s very important for me!');
       setIsVoted(true);
     },
-    [isVoted]
+    [isVoted, setIsVoted]
   );
-  useEffect(() => {
-    localStorage.setItem('is-voted', JSON.stringify(isVoted));
-  }, [isVoted]);
 
   useEffect(() => {
     const putFeedbacksData = async () => {
@@ -170,68 +165,3 @@ const FeedbackApp = () => {
 //   }
 // }
 export default FeedbackApp;
-
-// HOOKS
-
-// import { useEffect, useRef } from 'react';
-
-// const usePutFeedbacks = (feedbacks, putFunction) => {
-//   const prevFeedbacksRef = useRef();
-
-//   useEffect(() => {
-//     const putFeedbacksData = async () => {
-//       if (
-//         prevFeedbacksRef.current &&
-//         JSON.stringify(prevFeedbacksRef.current) !== JSON.stringify(feedbacks)
-//       ) {
-//         await putFunction(feedbacks);
-//       }
-//       prevFeedbacksRef.current = feedbacks;
-//     };
-//     putFeedbacksData();
-//   }, [feedbacks, putFunction]);
-// };
-
-// import { useState, useEffect } from 'react';
-
-// const useFetchFeedbacks = fetchFunction => {
-//   const [data, setData] = useState(null);
-//   const [error, setError] = useState(null);
-//   const [isFetched, setIsFetched] = useState(false);
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       if (isFetched) return;
-//       try {
-//         const result = await fetchFunction();
-//         if (result.statusText !== 'OK') {
-//           throw new Error('Something went wrong...');
-//         }
-//         setData(result.data);
-//         setIsFetched(true);
-//       } catch (error) {
-//         setError(error.message);
-//       }
-//     };
-
-//     fetchData();
-//   }, [fetchFunction, isFetched]);
-
-//   return { data, error };
-// };
-
-// final?
-// const FeedbackApp = () => {
-//   const [feedbacks, setFeedbacks] = useState({ good: 0, neutral: 0, bad: 0 });
-//   const [isVoted, setIsVoted] = useLocalStorage('is-voted', false);
-//   const { data: fetchedFeedbacks, error } = useFetchFeedbacks(getFeedbacks);
-
-//   useEffect(() => {
-//     if (fetchedFeedbacks) {
-//       setFeedbacks(fetchedFeedbacks);
-//     }
-//   }, [fetchedFeedbacks]);
-
-//   usePutFeedbacks(feedbacks, putFeedbacks);
-// .....rest logic
-// };

@@ -1,5 +1,5 @@
 // import { Component } from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
@@ -9,17 +9,11 @@ import ContactList from './ContactList/ContactList';
 import ContactFilter from './ContactFilter/ContactFilter';
 
 import styles from './phone-book.module.scss';
+import { useLocalStorage } from 'helpers/hooks/useLocalStorage';
 
 const PhoneBook = () => {
-  const [contacts, setContacts] = useState(() => {
-    const newContacts = JSON.parse(localStorage.getItem('contacts-list'));
-    return newContacts ?? [];
-  });
+  const [contacts, setContacts] = useLocalStorage('contacts-list', []);
   const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    localStorage.setItem('contacts-list', JSON.stringify(contacts));
-  }, [contacts]);
 
   const isDuplicated = searchEl => {
     const result = contacts.find(({ name, number }) => {

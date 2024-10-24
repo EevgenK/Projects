@@ -1,3 +1,5 @@
+import bgImg from '../img/bg.jpg';
+
 import { Routes, Route, NavLink, useLocation } from 'react-router-dom';
 import { useState, useEffect, useCallback } from 'react';
 import FeedbackApp from './modules/FeedbackApp/FeedbackApp';
